@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetDemo.Pipeline
 {
@@ -19,7 +19,7 @@ namespace AspNetDemo.Pipeline
 
         public async Task Invoke(HttpContext context)
         {
-            context.Response.OnSendingHeaders((state) =>
+            context.Response.OnStarting((state) =>
             {
                 var sw = state as Stopwatch;
                 sw.Stop();
@@ -27,7 +27,7 @@ namespace AspNetDemo.Pipeline
                     .Response
                     .Headers
                     .Append("X-Api-Timing", $"{sw.ElapsedMilliseconds} ms"); //c# 6 string interop newness
-
+                return Task.CompletedTask;
             }, Stopwatch.StartNew());
 
             await _next(context);

@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetDemo.Pipeline
 {
@@ -30,6 +30,8 @@ namespace AspNetDemo.Pipeline
             response.AppendLine(" <h1>Hello World!</h1>");
             response.AppendLine("</body>");
             response.AppendLine("</html>");
+
+            context.Response.Headers.Append("Content-Length", response.Length.ToString());
 
             await context.Response.WriteAsync(response.ToString());
 

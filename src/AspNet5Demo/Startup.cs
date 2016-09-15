@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
-using Microsoft.Framework.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using AspNetDemo.Extensions;
 
 namespace AspNetDemo
 {
     public class Startup
     {
-        bool IsTimingOn = false; // we would want this to be config, but that's another demo!
+        bool IsTimingOn = true; // we would want this to be config, but that's another demo!
         
         public void ConfigureServices(IServiceCollection services)
         {

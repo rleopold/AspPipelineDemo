@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetDemo.Pipeline
 {
@@ -28,6 +28,7 @@ namespace AspNetDemo.Pipeline
             response.AppendLine("}");
 
             context.Response.Headers.Append("Content-Type", "application/json");
+            context.Response.Headers.Append("Content-Length", response.Length.ToString());
             await context.Response.WriteAsync(response.ToString());
             await _next(context);
         }
