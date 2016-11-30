@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.1.0-*",
+  "version": "1.2.0-*",
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": true
@@ -10,10 +10,10 @@
       "dependencies": {
         "Microsoft.NETCore.App": {
           "type": "platform",
-          "version": "1.0.1"
+          "version": "1.1.0"
         },
-        "Microsoft.AspNetCore.Hosting": "1.0.0",
-        "Microsoft.AspNetCore.Server.Kestrel": "1.0.1"
+        "Microsoft.AspNetCore.Hosting":"1.1.0",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.1.0"
       },
       "imports": "dnxcore50"
     }
